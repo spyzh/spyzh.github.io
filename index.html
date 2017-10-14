@@ -51,7 +51,9 @@
 							<div class="logo"><span><img src=images/favicon-96x96.png></span></div>
 							<h2>admin msk </h2> 
 							<p>  Звоните: +7 (925) 177-7411</p>
-							<p>Установка, настройка и администрирование компьютеров и сетевого оборудования в Москве. Подключение слаботочных систем. Многолетний опыт работы в области IT-аутсорсинга.</p>
+							<p>Установка, настройка и администрирование компьютеров и сетевого оборудования в Москве. 
+							Подключение слаботочных систем. Многолетний опыт работы в области IT-аутсорсинга.
+							</p>
 						</div>
 					</section>
 
@@ -115,13 +117,16 @@
 										<article>
 											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
 											<h3 class="major">Офис на 20 работников с нуля</h3>
-											<p>Сотрудники ADMIN MSK завершили обустройство нового офиса для компании ООО «Мосстройподряд».  По результатам работы были успешно решены такие задачи, как: Создание внутренней сети, настройка серверного оборудования и подключение к Интернет; Установка и настройка системы IP-телефонии; Установка и настройка периферийного оборудования.</p>
+											<p>Сотрудники ADMIN MSK завершили обустройство нового офиса для компании ООО «Мосстройподряд».  
+											По результатам работы были успешно решены такие задачи, как: 
+											Создание внутренней сети, настройка серверного оборудования и подключение к Интернет; Установка и настройка системы IP-телефонии; Установка и настройка периферийного оборудования.</p>
 											<!--<a href="#" class="special">подробнее</a>-->
 										</article>
 										<article>
 											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
 											<h3 class="major">Подключение слаботочных систем</h3>
-											<p>Компания ADMIN MSK приняла участие в подготовке нового отделения банка «Русский стандарт». Подключены и настроены системы видеонаблюдения и пожарной безопасности. Кроме того, была закуплена,  смонтирована и успешно настроена система охранной сигнализации.</p>
+											<p>Компания ADMIN MSK приняла участие в подготовке нового отделения банка «Русский стандарт». Подключены и настроены системы видеонаблюдения и пожарной безопасности.
+											Кроме того, была закуплена,  смонтирована и успешно настроена система охранной сигнализации.</p>
 											<!--<a href="#" class="special">подробнее</a>-->
 										</article>
 										<article>
@@ -157,22 +162,55 @@
 									<input type="text" name="name" id="name" />
 								</div>
 								<div class="field">
-									<label for="email">Email</label>
-									<input type="email" name="email" id="email" />
+									<label for="email">Email для ответа</label>
+									<input type="email" name="_replyto" id="email" />
 								</div>
 								<div class="field">
 									<label for="message">Сообщение</label>
-									<textarea name="message" id="message" rows="4"></textarea>
+									<textarea name="body" id="message" rows="4"></textarea>
 								</div>
 								<ul class="actions">
 									<li><input type="submit" value="Отправить" /></li>
 								</ul>
 								<input type="hidden" name="_subject" value="Adminmsk.ru - Сообщение с сайта" />
 								<input type="hidden" name="_language" value="ru" />
-								<input type="text" name="_gotcha" style="display:none" />
+								<!-- Капча от спама <input type="text" name="_gotcha" style="display:none" />-->
 								<input type="hidden" name="_cc" value="spyzhuk@gmail.com" />
-								<!--<input type="hidden" name="_next" value="/thanks.html" />-->
+								<!-- Альтернативное перенаправление после отправки<input type="hidden" name="_next" value="/thanks.html" />-->
 							</form>
+							<script type="text/javascript">$(document).on('submit', '#contact-form', function(e) {
+									e.preventDefault();
+									var replyto = $('input[name=_replyto]'),
+										replyto_text = replyto.val(),
+										subject = $('input[name=_subject]'),
+										subject_text = subject.val(),
+										body = $('textarea[name=body]'),
+										body_text = body.val();
+
+									$.ajax({
+										url: "https://formspree.io/spyzhuk@gmail.com",
+										method: "POST",
+										data: {
+											_replyto: replyto_text,
+											_subject: subject_text,
+											message: body_text
+										},
+										dataType: "json",
+										beforeSend: function( xhr ) {
+											spinner.show();
+									  }
+									}).done(function(){
+										$('#contacts-success-wrapper').show();
+									}).fail(function() {
+										$('#contacts-error-wrapper').show();
+									}).always(function() {
+										spinner.hide();
+										$('#contacts-wrapper').remove();
+									});
+								});
+								</script>
+								
+								
 							<ul class="contact">
 							
 								<li class="fa-home">
