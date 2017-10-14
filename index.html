@@ -156,60 +156,23 @@
 						<div class="inner">
 							<h2 class="major">Свяжитесь с нами</h2>
 							<p>С любыми возникшими вопросами Вы можете обратиться к нам по телефону или оставить сообщение, используя форму ниже.</p>
-							<form method="post" action="//formspree.io/spyzhuk@gmail.com" enctype="text/plain">
+							<form method="post" action="https://formcarry.com/s/SyygNRy6b" accept-charset="UTF-8>
 								<div class="field">
 									<label for="name">Ваше имя</label>
-									<input type="text" name="name" id="name" />
+									<input type="name" name="name" id="name" />
 								</div>
 								<div class="field">
 									<label for="email">Email для ответа</label>
-									<input type="email" name="_replyto" id="email" />
+									<input type="email" name="email" id="email" />
 								</div>
 								<div class="field">
 									<label for="message">Сообщение</label>
-									<textarea name="body" id="message" rows="4"></textarea>
+									<textarea name="message" id="message" rows="4"></textarea>
 								</div>
 								<ul class="actions">
 									<li><input type="submit" value="Отправить" /></li>
 								</ul>
-								<input type="hidden" name="_subject" value="Adminmsk.ru - Сообщение с сайта" />
-								<input type="hidden" name="_language" value="ru" />
-								<!-- Капча от спама <input type="text" name="_gotcha" style="display:none" />-->
-								<input type="hidden" name="_cc" value="spyzhuk@gmail.com" />
-								<!-- Альтернативное перенаправление после отправки<input type="hidden" name="_next" value="/thanks.html" />-->
 							</form>
-							<script type="text/javascript">$(document).on('submit', '#contact-form', function(e) {
-									e.preventDefault();
-									var replyto = $('input[name=_replyto]'),
-										replyto_text = replyto.val(),
-										subject = $('input[name=_subject]'),
-										subject_text = subject.val(),
-										body = $('textarea[name=body]'),
-										body_text = body.val();
-
-									$.ajax({
-										url: "https://formspree.io/spyzhuk@gmail.com",
-										method: "POST",
-										data: {
-											_replyto: replyto_text,
-											_subject: subject_text,
-											message: body_text
-										},
-										dataType: "json",
-										beforeSend: function( xhr ) {
-											spinner.show();
-									  }
-									}).done(function(){
-										$('#contacts-success-wrapper').show();
-									}).fail(function() {
-										$('#contacts-error-wrapper').show();
-									}).always(function() {
-										spinner.hide();
-										$('#contacts-wrapper').remove();
-									});
-								});
-								</script>
-								
 								
 							<ul class="contact">
 							
